@@ -1,0 +1,18 @@
+ul {
+    list-style-type: circle;
+}
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #000000;
+    padding: 5px;
+}
+tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+.inlineBlock {
+    margin-right: 25px;
+    display: inline-block;
+}
+.highlighted { 
+	background: yellow;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Custom Filters in Angular</title>
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
+	<script src='controllers/customFilterCtrl1.js'></script>
+    <script src='controllers/customFilterCtrl2.js'></script>
+    <script src='controllers/customFilterCtrl3.js'></script>
+    <script src='filters/reverseFilter.js'></script>
+    <script src='filters/highlightFilter.js'></script>
+	<link rel="stylesheet" type="text/css" href="css/filter.css">
+</head>
+<body ng-app='customFilterApp'>
+    
+    <div ng-controller='customFilterCtrl1'>
+        <h3>1. Filter a list/table based on user input</h3>
+        <input type='text' ng-model='userInput1' /><br />
+        <ul class='inlineBlock'>
+            <li ng-repeat='brand in brands | filter: userInput1'>{{brand}}</li>
+        </ul>
+        <table class='inlineBlock'>
+            <tr ng-repeat='brand in brands | filter: userInput1'>
+                <td>{{brand}}</td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    
+    <div ng-controller='customFilterCtrl2'>
+        <h3>2. Reverse a user input</h3>
+        <input type='text' ng-model='input2' /><br />
+        Input: {{input2}}<br />
+        Reverse: {{input2 | myReverse}}
+        <hr>
+    </div>
+    
+    <div ng-controller='customFilterCtrl3'>
+        <h3>3. Highlight a user input</h3>
+        Search: <input type="text" placeholder="Search" ng-model="input3">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+            </tr>
+            <!-- filter code -->
+            <tr ng-repeat="item in data">
+                <td ng-bind-html="item.title | highlight:input3"></td>
+                <td ng-bind-html="item.content | highlight:input3"></td>
+            </tr>
+         </table>
+    </div>
+
+</body>
+</html>
